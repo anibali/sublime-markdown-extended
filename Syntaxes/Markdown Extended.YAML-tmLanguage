@@ -219,6 +219,16 @@ patterns:
   - include: source.lua
 
 - name: markup.raw.block.markdown markup.raw.block.fenced.markdown
+  begin: (```|~~~|{%\s*highlight)\s*(\{\s*itorch\s*.*\s*\})\s*((?:linenos\s*)?%})?$
+  end: (```|~~~|{%\s*endhighlight\s*%})\n
+  captures:
+    '1': {name: punctuation.definition.fenced.markdown}
+    '2': {name: variable.language.fenced.markdown}
+    '3': {name: punctuation.definition.fenced.markdown}
+  patterns:
+  - include: source.lua
+
+- name: markup.raw.block.markdown markup.raw.block.fenced.markdown
   begin: (```|~~~|{%\s*highlight)\s*(md|markdown)\s*((?:linenos\s*)?%})?$
   end: (```|~~~|{%\s*endhighlight\s*%})\n
   captures:
